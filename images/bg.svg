@@ -15,7 +15,7 @@
     <animateTransform attributeType="XML" attributeName="transform" begin="0s" dur="30s" type="rotate" values="0 210 530 ; -30 210 530 ; 0 210 530" keyTimes="0 ; 0.5 ; 1" repeatCount="indefinite" />
   </path>
 
-  <circle cx="200" cy="150" r="20" stroke="#1a73e8" fill="#1a73e8">
+  <circle cx="100" cy="150" r="120" stroke="#1a73e8" fill="#1a73e8">
     <animateMotion path="M 0 0 L 40 20 Z" dur="5s" repeatCount="indefinite" />
   </circle>
 
