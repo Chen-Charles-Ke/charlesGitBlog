@@ -23,7 +23,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"charlesongitee.gitee.io","root":"/charles-blog/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#6666FF","avatar":"/images/charlesAvatar.jpg","favicon":"/images/thinking.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/charles-blog/images/bg.svg","description":"一起开心， 共同战斗。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#6666FF","avatar":"/images/charlesAvatar.jpg","favicon":"/images/thinking.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/charles-blog/images/bg.svg","description":"浪漫的山东人， 可不可以把我卷进你的煎饼里。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -163,18 +163,19 @@
         </div>
 
         
+            <span>
             <div class="article-header">
-                <!-- <span> -->
+                <span>
                     <div class="avatar">
                         <img src="/charles-blog/images/charlesAvatar.jpg">
                     </div>
                     <div class="info">
                         <div class="author">
-                            <span class="name">Charles</span>
+                            <!-- <span class="name">Charles</span> -->
                             
-                                <span class="author-label">play white noise</span>
+                                <span class="author-label">play white noise </span>
+                                <span><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=2&id=853708&auto=0&height=32"></iframe></span>
                             
-                            <span><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=2&id=853708&auto=0&height=32"></iframe></span>
                         </div>
                         <div class="meta-info">
                             <div class="article-meta-info">
@@ -211,8 +212,9 @@
 
                         </div>
                     </div>
-                <!-- </span> -->
+                </span>
             </div>
+            </span>
         
 
         <div class="article-content markdown-body">
@@ -241,19 +243,46 @@
 
         
             <div class="post-copyright-info">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li>Post title：Swift Utility Component - UserDefaults</li>
-        <li>Post author：Charles</li>
-        <li>Create time：2021-11-12 20:49:20</li>
-        <li>
-            Post link：https://charlesongitee.gitee.io/charles-blog/2021/11/12/userDefaults/
-        </li>
-        <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
-        </li>
-    </ul>
-</div>
+                .article-copyright-info-container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  font-size: 1rem;
+  background: var(--second-background-color);
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--copyright-info-color);
+  }
+
+
+  ul {
+
+    margin-left: 10px;
+
+    li {
+      margin-bottom: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--default-text-color);
+
+      .license {
+        font-weight: bold;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
 
             </div>
         

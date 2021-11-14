@@ -49,9 +49,9 @@ keep-mobile()
   color: var(--default-text-color);
 }
 .article-content-container .article-header .info .author .author-label {
-  margin-left: 10px;
+  margin-left: 0px;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0 5px;
   border-radius: 5px;
   color: #fff;
