@@ -26,7 +26,8 @@
     KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#6666FF","avatar":"/images/charlesAvatar.jpg","favicon":"/images/thinking.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/charles-blog/images/bg.svg","description":"浪漫的山东人， 可不可以把我卷进你的煎饼里。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/charles-blog/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -218,7 +219,7 @@
         
 
         <div class="article-content markdown-body">
-            <p>Alright, id say if you want to use @ViewBuilder, I probably infer that the basic swiftui elements and components can no longer meet the complex requirements or customization requirements of your project. We need to DIY the more extensible view.  </p>
+            <p>Alright, id say if you want to use @ViewBuilder, I ventured infer that the basic swiftUI elements and components can no longer meet the complex requirements or customization requirements of your project. We need to DIY the more extensible view.  </p>
 <p>Today, let’s take a good look at this @ViewBuilder</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SwiftUI</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ContentView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">HStack</span>&#123;</span><br><span class="line">            <span class="type">Text</span>(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">            <span class="type">Text</span>(<span class="string">&quot;world&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Very simple hello world level swiftUI code huh? as all we know, in the world of swiftUI, everything is a view, but have you ever thought about why we put two text views in hstack, so they can be aligned horizontally, and why hstack can accept two views?   </p>
