@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Charles">
+    
+    <title>
+        
+            Swift UI Component - Segemented Picker |
+        
+        Charles Tech Blog
+    </title>
+    
+<link rel="stylesheet" href="/charles-blog/css/style.css">
+
+    <link rel="shortcut icon" href="/charles-blog/images/thinking.svg">
+    
+<link rel="stylesheet" href="/charles-blog/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"charlesongitee.gitee.io","root":"/charles-blog/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#6666FF","avatar":"/images/charlesAvatar.jpg","favicon":"/images/thinking.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/charles-blog/images/bg.svg","description":"浪漫的山东人， 可不可以把我卷进你的煎饼里。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/charles-blog">
+                    <img src="/charles-blog/images/thinking.svg">
+                </a>
+            
+            <a class="logo-title" href="/charles-blog">
+                Charles Tech Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/charles-blog/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/charles-blog/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/charles-blog/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/charles-blog/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/charles-blog/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/charles-blog/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/charles-blog/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/charles-blog/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Swift UI Component - Segemented Picker</span>
+        </div>
+
+        
+            <span>
+            <div class="article-header">
+                <span>
+                    <div class="avatar">
+                        <img src="/charles-blog/images/charlesAvatar.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <!-- <span class="name">Charles</span> -->
+                            
+                                <span class="author-label">play white noise </span>
+                                <span><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=2&id=853708&auto=0&height=32"></iframe></span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-11-13 20:49:20
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/charles-blog/categories/Swift-UI-Component/">Swift UI Component</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>762 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+        </span>
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </span>
+            </div>
+            </span>
+        
+
+        <div class="article-content markdown-body">
+            <h5 id="Preface"><a href="#Preface" class="headerlink" title="Preface:"></a>Preface:</h5><p>You will not be unfamiliar with Segemented Picker, or the tab bar selector, its a common component. Generally we can switch to another screen/view by tapping the different tab index. </p>
+<p>But the problem we facing is, there are different design types of your segemented picker, in order to maintain the uniform style of design screen elements, your designer will ask you build several different-looking components which have same funtionality.  </p>
+<p>such as:  </p>
+<ul>
+<li>picker has underline</li>
+<li>picker has marker state</li>
+<li>tab type picker</li>
+<li>different background color picker</li>
+</ul>
+<p>Today i will walk though you to build a extensible component that will never let your desinger trouble you again.  lets start it!</p>
+<h5 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation:"></a>Implementation:</h5><h6 id="Step1-Lets-write-a-enum-to-define-all-the-segemented-control-types-we-might-need"><a href="#Step1-Lets-write-a-enum-to-define-all-the-segemented-control-types-we-might-need" class="headerlink" title="Step1. Lets write a enum to define all the segemented control types we might need."></a>Step1. Lets write a enum to define all the segemented control types we might need.</h6><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SegementedControlType</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> underline</span><br><span class="line">    <span class="keyword">case</span> tab</span><br><span class="line">    <span class="keyword">case</span> blackRoundTab</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Step2-Input-for-segemented-control"><a href="#Step2-Input-for-segemented-control" class="headerlink" title="Step2. Input for segemented control."></a>Step2. Input for segemented control.</h6><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">struct</span> <span class="title">SegmentedTabContent</span> </span>&#123;</span><br><span class="line">    <span class="comment">/// Segment tab text</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> text: <span class="type">String</span></span><br><span class="line">    <span class="comment">/// Segment tab red marker end of text</span></span><br><span class="line">    <span class="meta">@Binding</span> <span class="keyword">public</span> <span class="keyword">var</span> markerState: <span class="type">Bool</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/// Init segmentedTabContent</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">init</span>(<span class="params">text</span>: <span class="type">String</span>, <span class="params">markerState</span>: <span class="type">Binding</span>&lt;<span class="type">Bool</span>&gt; <span class="operator">=</span> .constant(<span class="literal">false</span>))</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.text <span class="operator">=</span> text</span><br><span class="line">        _markerState <span class="operator">=</span> markerState</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>text</code> which type is <code>String</code> will as the label name displaying over somewhere, and we give a tag <code>makerState</code> here to show the red maker(which represents unread status) or not.</p>
+<p>Before next step, id like to write a segmented control configuration typealias for convenience.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">typealias</span> <span class="type">SegmentedControlConfiguration</span> <span class="operator">=</span> (textColor: <span class="type">Color</span>, selectTextColor: <span class="type">Color</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>textColor</code> is the tab label color and <code>selectTextColor</code> is the tab selected color.</p>
+<h6 id="Step3-Lets-start-working-on-the-View-stuff"><a href="#Step3-Lets-start-working-on-the-View-stuff" class="headerlink" title="Step3. Lets start working on the View stuff."></a>Step3. Lets start working on the View stuff.</h6><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">struct</span> <span class="title">SegmentedControl</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// MARK: - Private fields</span></span><br><span class="line">    <span class="meta">@Binding</span> <span class="keyword">private</span> <span class="keyword">var</span> selection: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> items: [<span class="type">SegmentedTabContent</span>]</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> isFullWidth: <span class="type">Bool</span></span><br><span class="line">    <span class="meta">@State</span> <span class="keyword">private</span> <span class="keyword">var</span> sizes: [<span class="type">Int</span>: <span class="type">CGSize</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">let</span> type: <span class="type">SegmentedControlType</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> onSelect: ((<span class="type">SegmentedTabContent</span>, <span class="type">Int</span>) -&gt; <span class="type">Void</span>)<span class="operator">?</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> configuration <span class="operator">=</span> <span class="type">SegmentedControlConfiguration</span>(textColor: <span class="type">Color</span>(.gray), selectTextColor: <span class="type">Color</span>(.black))</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> scrollEnable: <span class="type">Bool</span> <span class="operator">=</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> spacingBetweenItem: <span class="type">CGFloat</span> &#123;</span><br><span class="line">        type <span class="operator">==</span> .underline</span><br><span class="line">            <span class="operator">?</span> <span class="number">30</span></span><br><span class="line">            : <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> offsetX: <span class="type">CGFloat</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> totalWidth: <span class="type">CGFloat</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> idx <span class="keyword">in</span> <span class="number">0</span> <span class="operator">..&lt;</span> selection &#123;</span><br><span class="line">            totalWidth <span class="operator">+=</span> sizes[idx]<span class="operator">?</span>.width <span class="operator">??</span> <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> totalWidth <span class="operator">+</span> (<span class="type">CGFloat</span>(selection) <span class="operator">*</span> spacingBetweenItem)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> contentLineBackground: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">Rectangle</span>()</span><br><span class="line">            .fill(<span class="type">Color</span>(.black))</span><br><span class="line">            .frame(</span><br><span class="line">                width: sizes[selection]<span class="operator">?</span>.width <span class="operator">??</span> <span class="number">0</span>,</span><br><span class="line">                height: <span class="number">2.0</span></span><br><span class="line">            )</span><br><span class="line">            .offset(x: offsetX)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> contentTabBackground: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">Rectangle</span>()</span><br><span class="line">            .fill(<span class="type">Color</span>(.white))</span><br><span class="line">            .frame(</span><br><span class="line">                width: sizes[selection]<span class="operator">?</span>.width <span class="operator">??</span> <span class="number">0</span>,</span><br><span class="line">                height: <span class="number">30</span></span><br><span class="line">            )</span><br><span class="line">            .cornerRadius(<span class="number">10</span>)</span><br><span class="line">            .shadow(</span><br><span class="line">                color: <span class="type">Color</span>.black.opacity(<span class="number">0.05</span>),</span><br><span class="line">                radius: <span class="number">4</span></span><br><span class="line">            )</span><br><span class="line">            .offset(x: offsetX)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> contentBlackTabBackground: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">Rectangle</span>()</span><br><span class="line">            .fill(<span class="type">Color</span>(.black).opacity(<span class="number">0.5</span>))</span><br><span class="line">            .frame(</span><br><span class="line">                width: sizes[selection]<span class="operator">?</span>.width <span class="operator">??</span> <span class="number">0</span>,</span><br><span class="line">                height: <span class="number">28</span></span><br><span class="line">            )</span><br><span class="line">            .cornerRadius(<span class="number">14</span>)</span><br><span class="line">            .shadow(</span><br><span class="line">                color: <span class="type">Color</span>.black.opacity(<span class="number">0.05</span>),</span><br><span class="line">                radius: <span class="number">4</span></span><br><span class="line">            )</span><br><span class="line">            .offset(x: offsetX)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// MARK: - Private methods</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">itemView</span>(<span class="params">index</span>: <span class="type">Int</span>)</span> -&gt; <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> foregroundColor <span class="operator">=</span> selection <span class="operator">==</span> index <span class="operator">?</span> configuration.selectTextColor : configuration.textColor</span><br><span class="line">        <span class="keyword">let</span> paddingHorizontal: <span class="type">CGFloat</span></span><br><span class="line">            <span class="operator">=</span> (type <span class="operator">==</span> .underline <span class="operator">||</span> type <span class="operator">==</span> .titleUnderline) <span class="operator">?</span> <span class="number">0.0</span> : <span class="number">10.0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="type">ZStack</span> &#123;</span><br><span class="line">            <span class="type">VStack</span> &#123;</span><br><span class="line">                <span class="type">Spacer</span>()</span><br><span class="line">                <span class="type">Text</span>(items[index].text)</span><br><span class="line">                    .kerning(<span class="number">0.6</span>)</span><br><span class="line">                    .font(.system(size: <span class="number">12</span>, weight: .medium))</span><br><span class="line">                    .foregroundColor(foregroundColor)</span><br><span class="line">                    .lineLimit(<span class="number">1</span>)</span><br><span class="line">                    .padding(.horizontal, paddingHorizontal)</span><br><span class="line">                    .overlay(</span><br><span class="line">                        <span class="type">Circle</span>()</span><br><span class="line">                            .strokeBorder(<span class="type">Color</span>(.white), lineWidth: <span class="number">1</span>)</span><br><span class="line">                            .background(<span class="type">Circle</span>().foregroundColor(<span class="type">Color</span>(.red)))</span><br><span class="line">                            .frame(width: <span class="number">9</span>, height: <span class="number">9</span>)</span><br><span class="line">                            .opacity(items[index].markerState <span class="operator">?</span> <span class="number">1</span> : <span class="number">0</span>)</span><br><span class="line">                            .offset(x: <span class="number">9</span>, y: <span class="operator">-</span><span class="number">9</span>),</span><br><span class="line">                        alignment: .topTrailing</span><br><span class="line">                    )</span><br><span class="line">                <span class="type">Spacer</span>()</span><br><span class="line">            &#125;</span><br><span class="line">            .frame(maxWidth: .none)</span><br><span class="line">            .background(</span><br><span class="line">                <span class="type">VStack</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> index <span class="operator">==</span> selection <span class="operator">&amp;&amp;</span> type <span class="operator">==</span> .titleUnderline &#123;</span><br><span class="line">                        <span class="type">Spacer</span>()</span><br><span class="line">                        <span class="type">Rectangle</span>()</span><br><span class="line">                            .fill(<span class="type">Color</span>(.black))</span><br><span class="line">                                .frame(height: <span class="number">2</span>)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">        .frame(maxWidth: isFullWidth <span class="operator">?</span> .infinity : .none, maxHeight: .infinity)</span><br><span class="line">        .contentShape(<span class="type">Rectangle</span>())</span><br><span class="line">        .background(</span><br><span class="line">            <span class="type">GeometryReader</span> &#123; geo -&gt; <span class="type">Color</span> <span class="keyword">in</span></span><br><span class="line">                <span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">                    sizes[index] <span class="operator">=</span> geo.frame(in: .global).size</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="type">Color</span>.clear</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">        .onTapGesture &#123;</span><br><span class="line">            withAnimation &#123;</span><br><span class="line">                selection <span class="operator">=</span> index</span><br><span class="line">                <span class="keyword">self</span>.onSelect<span class="operator">?</span>(items[index], index)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// MARK: - Initializer</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/// Init.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">init</span>(</span></span><br><span class="line"><span class="function">        <span class="params">type</span>: <span class="type">SegmentedControlType</span> <span class="operator">=</span> .underline,</span></span><br><span class="line"><span class="function">        <span class="params">selection</span>: <span class="type">Binding</span>&lt;<span class="type">Int</span>&gt; <span class="operator">=</span> .constant(<span class="number">0</span>),</span></span><br><span class="line"><span class="function">        <span class="params">items</span>: [<span class="type">SegmentedTabContent</span>],</span></span><br><span class="line"><span class="function">        <span class="params">isFullWidth</span>: <span class="type">Bool</span> <span class="operator">=</span> <span class="literal">false</span>,</span></span><br><span class="line"><span class="function">        <span class="params">onSelectTab</span>: ((<span class="type">SegmentedTabContent</span>, <span class="type">Int</span>) -&gt; <span class="type">Void</span>)<span class="operator">?</span> <span class="operator">=</span> <span class="literal">nil</span>,</span></span><br><span class="line"><span class="function">        <span class="params">configuration</span>: <span class="type">SegmentedControlConfiguration</span>? <span class="operator">=</span> <span class="literal">nil</span>,</span></span><br><span class="line"><span class="function">        <span class="params">scrollEnable</span>: <span class="type">Bool</span>? <span class="operator">=</span> <span class="literal">false</span></span></span><br><span class="line"><span class="function">    )</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.type <span class="operator">=</span> type</span><br><span class="line">        _selection <span class="operator">=</span> selection</span><br><span class="line">        <span class="keyword">self</span>.items <span class="operator">=</span> items</span><br><span class="line">        <span class="keyword">self</span>.isFullWidth <span class="operator">=</span> isFullWidth</span><br><span class="line">        onSelect <span class="operator">=</span> onSelectTab</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> config <span class="operator">=</span> configuration &#123;</span><br><span class="line">            <span class="keyword">self</span>.configuration <span class="operator">=</span> config</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> scroll <span class="operator">=</span> scrollEnable &#123;</span><br><span class="line">            <span class="keyword">self</span>.scrollEnable <span class="operator">=</span> scroll</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// content</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">content</span>()</span> -&gt; <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">HStack</span>(spacing: spacingBetweenItem) &#123;</span><br><span class="line">            <span class="type">ForEach</span>(items.indices, id: \.<span class="keyword">self</span>) &#123; index <span class="keyword">in</span></span><br><span class="line">                itemView(index: index)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        .padding(.top, <span class="number">3</span>)</span><br><span class="line">        .background(</span><br><span class="line">            <span class="type">ZStack</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> type <span class="operator">==</span> .underline &#123;</span><br><span class="line">                    contentLineBackground</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> type <span class="operator">==</span> .tab &#123;</span><br><span class="line">                    contentTabBackground</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> type <span class="operator">==</span> .blackRoundTab &#123;</span><br><span class="line">                    contentBlackTabBackground</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            alignment: type <span class="operator">==</span> .underline <span class="operator">?</span> .bottomLeading : .leading</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// Body.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">VStack</span>(alignment: .leading, spacing: <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> scrollEnable &#123;</span><br><span class="line">                <span class="type">ScrollView</span>(.horizontal) &#123;</span><br><span class="line">                    content()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                content()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        .frame(maxHeight: .infinity)</span><br><span class="line">        .frame(height: <span class="number">44</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Demonstration"><a href="#Demonstration" class="headerlink" title="Demonstration:"></a>Demonstration:</h5><img src="https://cdn.jsdelivr.net/gh/Chen-Charles-Ke/charlesImageHosting@master/20211114/Segemented.50pmq7tjfp80.png" height="700" width="375" unselectable="on" style="background:none; border:none; pointer-events:none; cursor:default; box-shadow:none;">
+
+
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Swift UI Component - Segemented Picker</li>
+        <li>Post author：Charles</li>
+        <li>Create time：2021-11-13 20:49:20</li>
+        <li>
+            Post link：https://charlesongitee.gitee.io/charles-blog/2021/11/13/tabBar/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/charles-blog/2021/11/12/viewBuilder/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Swift Notebook - @ViewBuilder</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'YHhKBHO6SRN6dmmrFD3VdKrB-gzGzoHsz',
+                    appKey: 'mxwiqks41hWkiqjluqNRxPKx',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: 'leave your thoughts here!',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Charles';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Charles</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href=" ">Keep v3.4.3</a>
+        </div> -->
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Implementation"><span class="nav-number">2.</span> <span class="nav-text">Implementation:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Step1-Lets-write-a-enum-to-define-all-the-segemented-control-types-we-might-need"><span class="nav-number">2.1.</span> <span class="nav-text">Step1. Lets write a enum to define all the segemented control types we might need.</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Step2-Input-for-segemented-control"><span class="nav-number">2.2.</span> <span class="nav-text">Step2. Input for segemented control.</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Step3-Lets-start-working-on-the-View-stuff"><span class="nav-number">2.3.</span> <span class="nav-text">Step3. Lets start working on the View stuff.</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Demonstration"><span class="nav-number">3.</span> <span class="nav-text">Demonstration:</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/charles-blog/js/utils.js"></script>
+
+<script src="/charles-blog/js/main.js"></script>
+
+<script src="/charles-blog/js/header-shrink.js"></script>
+
+<script src="/charles-blog/js/back2top.js"></script>
+
+<script src="/charles-blog/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/charles-blog/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/charles-blog/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/charles-blog/js/left-side-toggle.js"></script>
+
+<script src="/charles-blog/js/libs/anime.min.js"></script>
+
+<script src="/charles-blog/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/charles-blog/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+<script src="/charles-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/charles-blog/live2dw/assets/haru02.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false,"scale":0.25},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
