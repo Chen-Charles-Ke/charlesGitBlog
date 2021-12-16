@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Charles">
+    
+    <title>
+        
+            Build your features with Clean Architecture + MVVM |
+        
+        Charles Tech Blog
+    </title>
+    
+<link rel="stylesheet" href="/charles-blog/css/style.css">
+
+    <link rel="shortcut icon" href="/charles-blog/images/thinking.svg">
+    
+<link rel="stylesheet" href="/charles-blog/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"charlesongitee.gitee.io","root":"/charles-blog/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#6666FF","avatar":"/images/charlesAvatar.jpg","favicon":"/images/thinking.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/charles-blog/images/bg.svg","description":"从进入厨房的瞬间开始，你们就肩负着烹饪美食的责任！"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/charles-blog/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/charles-blog">
+                    <img src="/charles-blog/images/thinking.svg">
+                </a>
+            
+            <a class="logo-title" href="/charles-blog">
+                Charles Tech Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/charles-blog/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/charles-blog/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/charles-blog/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/charles-blog/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/charles-blog/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/charles-blog/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/charles-blog/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/charles-blog/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Build your features with Clean Architecture + MVVM</span>
+        </div>
+
+        
+            <span>
+            <div class="article-header">
+                <span>
+                    <div class="avatar">
+                        <img src="/charles-blog/images/charlesAvatar.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <!-- <span class="name">Charles</span> -->
+                            
+                                <span class="author-label">play white noise </span>
+                                <span><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=2&id=853708&auto=0&height=32"></iframe></span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-12-17 23:59:20
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/charles-blog/categories/Swift-Notebook/">Swift Notebook</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>650 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+        </span>
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </span>
+            </div>
+            </span>
+        
+
+        <div class="article-content markdown-body">
+            <p>I dont wanna give too much explanation of Clean Architecture, you know basically im a code-driving guy, i pasted the Clean Architecture document here which you can have a quick look through. In this article i will show you how to introduce clean architecture to build features in iOS project, and i firmly sure that you will love this way of structuring your project. lets start it !!</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h4><p>There is a pretty funny api without appKey: <a class="link" target="_blank" rel="noopener" href="http://www.boredapi.com/api/activity">http://www.boredapi.com/api/activity<i class="fas fa-external-link-alt"></i></a> you can check it out first.<br>so yeah Bored API is a free API to find something to do by getting suggestions for random activities. and the json response structure like following : </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;activity&quot;:&quot;Have a paper airplane contest with some friends&quot;,</span><br><span class="line">    &quot;type&quot;:&quot;social&quot;,</span><br><span class="line">    &quot;participants&quot;:4,</span><br><span class="line">    &quot;price&quot;:0.02,</span><br><span class="line">    &quot;link&quot;:&quot;&quot;,</span><br><span class="line">    &quot;key&quot;:&quot;8557562&quot;,</span><br><span class="line">    &quot;accessibility&quot;:0.05</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Lets say we need build a screen in our app which has a <code>so bored</code> button, and user will get a new advice from Bored API every single resposne by tapping the button. We dont need display too many lines here, <code>activity</code> <code>type</code> <code>participants</code> <code>price</code> thats fine.</p>
+<p>Its a pretty easy requirement yeah ? i mean like sample bussiness, sample response data. So the qustion is how will you stcuture your folder with Clean Architecture?</p>
+<h4 id="Folder-Overview"><a href="#Folder-Overview" class="headerlink" title="Folder Overview"></a>Folder Overview</h4><p><strong>Data</strong></p>
+<ul>
+<li><code>Mappers</code>  —&gt; data mapper</li>
+<li><code>Repositories</code>  —&gt; network call impl</li>
+</ul>
+<p><strong>Domain</strong></p>
+<ul>
+<li><code>Entities</code> —&gt; all view models</li>
+<li><code>Repositories</code> —&gt; network call protocols</li>
+<li><code>UseCases</code> —&gt; feature useCase</li>
+</ul>
+<p><strong>UI</strong></p>
+<ul>
+<li><code>View</code></li>
+<li><code>ViewModel</code></li>
+<li><code>ViewController</code> (if needed, demo in this article based on pure MVVM so we actually will not have VC)</li>
+</ul>
+<h4 id="Code-Impl"><a href="#Code-Impl" class="headerlink" title="Code Impl"></a>Code Impl</h4><p>i would like to define the data model of Bored.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BoredEntity</span>: <span class="title">Codable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> activity: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> type: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> participants: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then lets define the Bored Protocol and Bored Error under Domain/Repositories folder</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"><span class="keyword">import</span> Combine</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">BoredError</span>: <span class="title">Error</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> apiError</span><br><span class="line">    <span class="keyword">case</span> unknown</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">BoredRepository</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">fetchSuggestions</span>()</span> -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">BoredEntity</span>, <span class="type">BoredError</span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Alright lets make real impl for this protocol under Data/Repositories then.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"><span class="keyword">import</span> Combine</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BoredJsonRepository</span>: <span class="title">BoredRepository</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">fetchSuggestions</span>()</span> -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">BoredEntity</span>, <span class="type">BoredError</span>&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> apiUrl <span class="operator">=</span> <span class="type">URL</span>(string: <span class="string">&quot;http://www.boredapi.com/api/activity&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="type">Future</span>&lt;<span class="type">BoredEntity</span>, <span class="type">BoredError</span>&gt; &#123; promise <span class="keyword">in</span></span><br><span class="line">            <span class="type">URLSession</span>.shared.dataTaskPublisher(for: apiUrl<span class="operator">!</span>)</span><br><span class="line">                .map &#123; <span class="variable">$0</span>.data &#125;</span><br><span class="line">                .decode(type: <span class="type">BoredEntity</span>.<span class="keyword">self</span>, decoder: <span class="type">JSONDecoder</span>().<span class="keyword">self</span>)</span><br><span class="line">                .eraseToAnyPublisher()</span><br><span class="line">        &#125;.eraseToAnyPublisher()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>next step lets build an useCase of Bored which can inject to viewModel to call its functions.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"><span class="keyword">import</span> Combine</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BoredUseCase</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> boredRepository: <span class="type">BoredRepository</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">init</span>(<span class="params">boredRepository</span>: <span class="type">BoredRepository</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.boredRepository <span class="operator">=</span> boredRepository</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">invoke</span>()</span> -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">BoredEntity</span>, <span class="type">BoredError</span>&gt; &#123;</span><br><span class="line">        boredRepository.fetchSuggestions()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can see that a complete data flow chain built by us right now, rest all view stuff. i will not give the details view and viewModel codes here but will be something like this, its strightforward:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BoredView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> viewModel: <span class="type">BoredViewModel</span></span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">BoredViewComponent</span>(data: viewModel.boredResonseData)</span><br><span class="line">        <span class="type">Text</span>(<span class="string">&quot;so bored&quot;</span>)</span><br><span class="line">            .onTapGesture &#123;</span><br><span class="line">                viewModel.invoke()</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BoredViewModel</span>: <span class="title">ObservableObject</span> </span>&#123;</span><br><span class="line">    <span class="meta">@published</span> boredResonseData: <span class="type">BoredEntity</span></span><br><span class="line">    <span class="keyword">var</span> useCase: <span class="type">BoredUsecase</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">invoke</span>()</span> &#123;</span><br><span class="line">        useCase.invoke()</span><br><span class="line">        .sink &#123; data <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">self</span>.boredResonseData <span class="operator">=</span> data</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>You may have noticed that we did not use or build any mapper files. Yes, that is because our query is very simple and there is no business coupling. Imagine if we need to introduce another api call to get some interesting data in the future, but you want to integrate the response data of the two api calls into one data model, the mapper will come in handy.</p>
+</blockquote>
+<h4 id="Diagram"><a href="#Diagram" class="headerlink" title="Diagram"></a>Diagram</h4><p>Finally, we use a diagram to intuitively feel how data flows and view consume data.</p>
+<div align="center">  
+<img src="https://cdn.jsdelivr.net/gh/Chen-Charles-Ke/charlesImageHosting@master/20211216/cleanArchitecture.3dymhfaiisy0.png" unselectable="on" style="background:none; border:none; pointer-events:none; cursor:default; box-shadow:none;">
+</div>
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Build your features with Clean Architecture + MVVM</li>
+        <li>Post author：Charles</li>
+        <li>Create time：2021-12-17 23:59:20</li>
+        <li>
+            Post link：https://charlesongitee.gitee.io/charles-blog/2021/12/17/cleanArchitecture/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/charles-blog/2021/11/28/ConcurrencySection1/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">iOS Concurrency Section 1</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'YHhKBHO6SRN6dmmrFD3VdKrB-gzGzoHsz',
+                    appKey: 'mxwiqks41hWkiqjluqNRxPKx',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: 'leave your thoughts here!',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Charles';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Charles</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href=" ">Keep v3.4.3</a>
+        </div> -->
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Requirements"><span class="nav-number">1.</span> <span class="nav-text">Requirements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Folder-Overview"><span class="nav-number">2.</span> <span class="nav-text">Folder Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-Impl"><span class="nav-number">3.</span> <span class="nav-text">Code Impl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Diagram"><span class="nav-number">4.</span> <span class="nav-text">Diagram</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/charles-blog/js/utils.js"></script>
+
+<script src="/charles-blog/js/main.js"></script>
+
+<script src="/charles-blog/js/header-shrink.js"></script>
+
+<script src="/charles-blog/js/back2top.js"></script>
+
+<script src="/charles-blog/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/charles-blog/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/charles-blog/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/charles-blog/js/left-side-toggle.js"></script>
+
+<script src="/charles-blog/js/libs/anime.min.js"></script>
+
+<script src="/charles-blog/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/charles-blog/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+<script src="/charles-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/charles-blog/live2dw/assets/haru02.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false,"scale":0.25},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
